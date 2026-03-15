@@ -68,7 +68,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* KAD FLIP LANDSKAP */
+        /* KAD FLIP LANDSKAP - Menggunakan kad_ketupat.png */
         .card-container {
             perspective: 2000px; 
             width: 90vw; max-width: 450px; 
@@ -91,13 +91,18 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.8);
             overflow: hidden;
             background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
+        /* HADAPAN KAD */
         .card-front {
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: var(--putih); text-align: center;
+            /* Latar belakang kad baru */
+            background-image: url('kad_ketupat.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .card-front h1 {
@@ -105,13 +110,23 @@
             color: var(--emas-cair); text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
         }
 
+        /* BELAKANG KAD */
         .card-back {
             transform: rotateY(180deg);
             display: flex; justify-content: center; align-items: center;
-            background-color: #000;
+            /* Latar belakang kad baru juga */
+            background-image: url('kad_ketupat.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
-        video { width: 100%; height: 100%; object-fit: contain; }
+        video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain;
+            /* Tambah bingkai hitam tipis di sekeliling video */
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
 
         /* UCAPAN SELEPAS VIDEO DENGAN LOGO */
         #ucapan-overlay {
@@ -164,8 +179,8 @@
         <div class="card-inner">
             <div class="card-front">
                 <h1>Salam Aidilfitri</h1>
-                <div style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">Maaf Zahir & Batin</div>
-                <p style="font-size: 0.6rem; margin-top: 25px; opacity: 0.6;">( Sentuh Kad )</p>
+                <div style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; color: var(--putih);">Maaf Zahir & Batin</div>
+                <p style="font-size: 0.6rem; margin-top: 25px; opacity: 0.8; color: var(--putih);">( Sentuh Kad )</p>
             </div>
             
             <div class="card-back">
@@ -222,6 +237,7 @@
             }
         }
 
+        // Tunjuk ucapan bila video tamat
         video.onended = () => { 
             ucapan.classList.add('show'); 
             fadeVolume(0.5);
