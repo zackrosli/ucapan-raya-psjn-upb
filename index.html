@@ -1,275 +1,261 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selamat Hari Raya Aidilfitri - UPB EOD</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root {
---emas: #d4af37;
---emas-cair: #f9e29d;
---putih: #ffffff;
---hijau-tua: #0a1a1a;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Raya Aidilfitri - UPB EOD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emas: #d4af37;
+            --emas-cair: #f9e29d;
+            --putih: #ffffff;
+            --hijau-tua: #0a1a1a;
+        }
 
-body, html {
-margin: 0; padding: 0; height: 100%; width: 100%;
-background-color: var(--hijau-tua);
-background-image: url('tema_raya.png'); 
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-font-family: 'Poppins', sans-serif;
-display: flex; justify-content: center; align-items: center;
-overflow: hidden;
-}
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            background-color: var(--hijau-tua);
+            /* Latar belakang utama yang konsisten */
+            background-image: url('tema_raya.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
 
-/* PAGE PERTAMA (OVERLAY) */
-#overlay {
-position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-background-color: rgba(0, 0, 0, 0.4);
-display: flex; flex-direction: column; justify-content: center; align-items: center;
-z-index: 1000; transition: 0.8s ease-in-out;
-padding: 20px; box-sizing: border-box;
-}
+        /* PAGE PERTAMA (OVERLAY) */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 1000; transition: 0.8s ease-in-out;
+            padding: 20px; box-sizing: border-box;
+        }
 
-.logo-container {
-display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
 
-.logo-container img {
-height: 75px; width: auto;
-filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
-}
+        .logo-container img {
+            height: 75px; 
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+        }
 
-.title-raya {
-font-family: 'Great Vibes', cursive;
-font-size: clamp(3rem, 10vw, 5rem);
-color: var(--emas-cair); margin: 0 0 30px 0;
-text-shadow: 2px 2px 10px rgba(0,0,0,0.9); text-align: center;
-}
+        .title-raya {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: var(--emas-cair);
+            margin: 0 0 30px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+            text-align: center;
+        }
 
-.btn-mula {
-padding: 14px 45px;
-background: linear-gradient(145deg, var(--emas), #b8860b);
-color: var(--putih); border: 2px solid var(--emas-cair);
-border-radius: 50px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.6);
--webkit-tap-highlight-color: transparent;
-}
+        .btn-mula {
+            padding: 14px 45px;
+            background: linear-gradient(145deg, var(--emas), #b8860b);
+            color: var(--putih); border: 2px solid var(--emas-cair);
+            border-radius: 50px;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            -webkit-tap-highlight-color: transparent;
+        }
 
-/* KAD FLIP */
-.card-container {
-perspective: 2000px; 
-width: 90vw; max-width: 450px; 
-height: calc(90vw * (9 / 16)); max-height: 255px;
-display: none; z-index: 100;
-/* Dinaikkan sedikit supaya tidak tutup animasi bawah */
-transform: translateY(-15%);
-}
+        /* KAD FLIP LANDSKAP - Menggunakan kad_ketupat.png */
+        .card-container {
+            perspective: 2000px; 
+            width: 90vw; max-width: 450px; 
+            height: calc(90vw * (9 / 16)); max-height: 255px;
+            display: none; z-index: 100;
+        }
 
-.card-inner {
-position: relative; width: 100%; height: 100%;
-transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-transform-style: preserve-3d;
-}
+        .card-inner {
+            position: relative; width: 100%; height: 100%;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
 
-.card-container.is-flipped .card-inner { transform: rotateY(180deg); }
+        .card-container.is-flipped .card-inner { transform: rotateY(180deg); }
 
-.card-front, .card-back {
-position: absolute; width: 100%; height: 100%;
-backface-visibility: hidden; border-radius: 15px;
-border: 3px solid var(--emas);
-box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-overflow: hidden;
-background: rgba(0, 0, 0, 0.3);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-}
+        .card-front, .card-back {
+            position: absolute; width: 100%; height: 100%;
+            backface-visibility: hidden; border-radius: 15px;
+            border: 3px solid var(--emas);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
 
-.card-front {
-display: flex; flex-direction: column; justify-content: center; align-items: center;
-color: var(--putih); text-align: center;
-background-image: url('kad_ketupat.jpg');
-background-size: cover; background-position: center;
-}
+        /* HADAPAN KAD */
+        .card-front {
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: var(--putih); text-align: center;
+            /* Latar belakang kad baru */
+            background-image: url('kad_ketupat.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
-.card-front h1 {
-font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 9vw, 3.5rem); margin: 0;
-color: var(--emas-cair); text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-}
+        .card-front h1 {
+            font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 9vw, 3.5rem); margin: 0;
+            color: var(--emas-cair); text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
 
-.card-back {
-transform: rotateY(180deg);
-display: flex; justify-content: center; align-items: center;
-background-image: url('kad_ketupat.jpg');
-background-size: cover; background-position: center;
-}
+        /* BELAKANG KAD */
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex; justify-content: center; align-items: center;
+            /* Latar belakang kad baru juga */
+            background-image: url('kad_ketupat.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
-video { width: 100%; height: 100%; object-fit: contain; }
+        video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain;
+            /* Tambah bingkai hitam tipis di sekeliling video */
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
 
-#ucapan-overlay {
-position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-background: rgba(0, 0, 0, 0.85);
-display: flex; flex-direction: column; justify-content: center; align-items: center;
-opacity: 0; visibility: hidden;
-transition: 1s ease-in-out; text-align: center;
-padding: 10px; box-sizing: border-box; z-index: 5;
-}
+        /* UCAPAN SELEPAS VIDEO DENGAN LOGO */
+        #ucapan-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden;
+            transition: 1s ease-in-out; text-align: center;
+            padding: 10px; box-sizing: border-box; z-index: 5;
+        }
 
-#ucapan-overlay.show { opacity: 1; visibility: visible; }
+        #ucapan-overlay.show { opacity: 1; visibility: visible; }
 
-.logo-ucapan { display: flex; gap: 10px; margin-bottom: 8px; }
-.logo-ucapan img { height: 45px; width: auto; filter: drop-shadow(0 0 5px var(--emas)); }
-.teks-ucapan { color: var(--emas-cair); font-size: 0.8rem; line-height: 1.4; margin: 0; }
-.nama-pengirim { font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: var(--putih); margin-top: 5px; }
+        .logo-ucapan {
+            display: flex; gap: 10px; margin-bottom: 8px;
+        }
 
-/* --- GAYA ANIMASI BENDERA --- */
-.deployment-area {
-position: absolute; bottom: 5%; width: 100%; height: 40vh;
-opacity: 0; transition: opacity 1s; pointer-events: none; z-index: 10;
-}
+        .logo-ucapan img {
+            height: 45px; 
+            width: auto;
+            filter: drop-shadow(0 0 5px var(--emas));
+        }
 
-.svg-master { width: 100%; height: 100%; overflow: visible; }
+        .teks-ucapan {
+            color: var(--emas-cair); font-size: 0.8rem; line-height: 1.4; margin: 0;
+        }
 
-.trail-path {
-fill: none; stroke: var(--emas); stroke-width: 1.5;
-stroke-dasharray: 1000; stroke-dashoffset: 1000;
-opacity: 0.4;
-}
+        .nama-pengirim {
+            font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: var(--putih); margin-top: 5px;
+        }
 
-.trail-path.draw {
-stroke-dashoffset: 0; transition: stroke-dashoffset 4s cubic-bezier(0.2, 0, 0.2, 1);
-}
-
-.flag-foreign { opacity: 0; transform: scale(0); transition: 4s cubic-bezier(0.2, 0, 0.2, 1), opacity 1s; }
-.flag-foreign.active { opacity: 1; transform: scale(1); }
-.flag-content { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.flag-content img { width: 45px; height: auto; filter: drop-shadow(0 0 5px black); }
-.flag-content span { font-size: 8px; color: var(--emas); font-weight: bold; text-shadow: 1px 1px 2px black; }
-
-</style>
+    </style>
 </head>
 <body>
 
-<div id="overlay">
-<div class="logo-container">
-<img src="logo_api.png" alt="Logo">
-<img src="logo_eod.png" alt="Logo">
-</div>
-<h1 class="title-raya">Selamat Hari Raya</h1>
-<button class="btn-mula" onclick="mulakanWeb()">Buka Kiriman</button>
-</div>
+    <div id="overlay">
+        <div class="logo-container">
+            <img src="logo_api.png" alt="Logo Cawangan">
+            <img src="logo_eod.png" alt="Logo EOD">
+        </div>
+        <h1 class="title-raya">Selamat Hari Raya</h1>
+        <button class="btn-mula" onclick="mulakanWeb()">Buka Kiriman</button>
+    </div>
 
-<audio id="bgMusic" loop>
-<source src="lagu_raya.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgMusic" loop>
+        <source src="lagu_raya.mp3" type="audio/mpeg">
+    </audio>
 
-<div class="card-container" id="card" onclick="toggleCard()">
-<div class="card-inner">
-<div class="card-front">
-<h1>Salam Aidilfitri</h1>
-<div style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; color: var(--putih);">Maaf Zahir & Batin</div>
-<p style="font-size: 0.6rem; margin-top: 25px; opacity: 0.8; color: var(--putih);">( Sentuh Kad )</p>
-</div>
+    <div class="card-container" id="card" onclick="toggleCard()">
+        <div class="card-inner">
+            <div class="card-front">
+                <h1>Salam Aidilfitri</h1>
+                <div style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; color: var(--putih);">Maaf Zahir & Batin</div>
+                <p style="font-size: 0.6rem; margin-top: 25px; opacity: 0.8; color: var(--putih);">( Sentuh Kad )</p>
+            </div>
+            
+            <div class="card-back">
+                <video id="rayaVideo" playsinline>
+                    <source src="hari raya.mp4" type="video/mp4">
+                </video>
 
-<div class="card-back">
-<video id="rayaVideo" playsinline>
-<source src="hari raya.mp4" type="video/mp4">
-</video>
-<div id="ucapan-overlay">
-<div class="logo-ucapan"><img src="logo_api.png"><img src="logo_eod.png"></div>
-<p class="teks-ucapan">
-Tulus ikhlas daripada kami<br>
-Cawangan Persenjataan / Unit Pemusnahan Bom<br>
-Ibu Pejabat Polis Daerah KLIA
-</p>
-<div class="nama-pengirim">Selamat Hari Raya</div>
-</div>
-</div>
-</div>
-</div>
+                <div id="ucapan-overlay">
+                    <div class="logo-ucapan">
+                        <img src="logo_api.png" alt="Logo">
+                        <img src="logo_eod.png" alt="Logo">
+                    </div>
+                    <p class="teks-ucapan">
+                        Tulus ikhlas daripada kami<br>
+                        Cawangan Persenjataan / Unit Pemusnahan Bom<br>
+                        Ibu Pejabat Polis Daerah KLIA<br>
+                        menyusun sepuluh jari memohon ampun dan maaf<br>
+                        atas segala khilaf yang sengaja mahupun tidak
+                    </p>
+                    <div class="nama-pengirim">Selamat Hari Raya</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="deployment-area" id="deployArea">
-<svg class="svg-master" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet">
-<circle cx="500" cy="200" r="4" fill="#fff" />
-<path class="trail-path" d="M500,200 L300,50" />
-<path class="trail-path" d="M500,200 L500,30" />
-<path class="trail-path" d="M500,200 L700,50" />
-<path class="trail-path" d="M500,200 L250,250" />
-<path class="trail-path" d="M500,200 L750,250" />
+    <script>
+        const music = document.getElementById('bgMusic');
+        const video = document.getElementById('rayaVideo');
+        const ucapan = document.getElementById('ucapan-overlay');
 
-<foreignObject class="flag-foreign" x="250" y="0" width="100" height="80">
-<div class="flag-content"><img src="Selangor-08.svg"><span>SELANGOR</span></div>
-</foreignObject>
-<foreignObject class="flag-foreign" x="450" y="-30" width="100" height="80">
-<div class="flag-content"><img src="Kedah-08.svg"><span>KEDAH</span></div>
-</foreignObject>
-<foreignObject class="flag-foreign" x="650" y="0" width="100" height="80">
-<div class="flag-content"><img src="Kelantan-08.svg"><span>KELANTAN</span></div>
-</foreignObject>
-<foreignObject class="flag-foreign" x="200" y="250" width="100" height="80">
-<div class="flag-content"><img src="Johor-08.svg"><span>JOHOR</span></div>
-</foreignObject>
-<foreignObject class="flag-foreign" x="700" y="250" width="100" height="80">
-<div class="flag-content"><img src="Sabah-08.svg"><span>SABAH</span></div>
-</foreignObject>
-</svg>
-</div>
+        function mulakanWeb() {
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'none';
+                document.querySelector('.card-container').style.display = 'block';
+                music.play();
+                music.volume = 0.5;
+            }, 800);
+        }
 
-<script>
-const music = document.getElementById('bgMusic');
-const video = document.getElementById('rayaVideo');
-const ucapan = document.getElementById('ucapan-overlay');
-const deployArea = document.getElementById('deployArea');
+        function toggleCard() {
+            const card = document.getElementById('card');
+            card.classList.toggle('is-flipped');
 
-function mulakanWeb() {
-document.getElementById('overlay').style.opacity = '0';
-setTimeout(() => {
-document.getElementById('overlay').style.display = 'none';
-document.querySelector('.card-container').style.display = 'block';
-music.play();
-music.volume = 0.5;
-}, 800);
-}
+            if (card.classList.contains('is-flipped')) {
+                fadeVolume(0.1);
+                ucapan.classList.remove('show');
+                setTimeout(() => { video.play(); }, 400);
+            } else {
+                video.pause();
+                video.currentTime = 0;
+                ucapan.classList.remove('show');
+                fadeVolume(0.5);
+            }
+        }
 
-function toggleCard() {
-const card = document.getElementById('card');
-card.classList.toggle('is-flipped');
-if (card.classList.contains('is-flipped')) {
-fadeVolume(0.1);
-ucapan.classList.remove('show');
-setTimeout(() => { video.play(); }, 400);
-} else {
-video.pause(); video.currentTime = 0;
-ucapan.classList.remove('show');
-fadeVolume(0.5);
-deployArea.style.opacity = "0";
-}
-}
+        // Tunjuk ucapan bila video tamat
+        video.onended = () => { 
+            ucapan.classList.add('show'); 
+            fadeVolume(0.5);
+        };
 
-video.onended = () => { 
-ucapan.classList.add('show'); 
-fadeVolume(0.5);
-// Mulakan animasi bendera
-deployArea.style.opacity = "1";
-setTimeout(() => {
-document.querySelectorAll('.trail-path').forEach(t => t.classList.add('draw'));
-document.querySelectorAll('.flag-foreign').forEach(n => n.classList.add('active'));
-}, 500);
-};
-
-function fadeVolume(target) {
-let current = music.volume;
-let step = target > current ? 0.05 : -0.05;
-let interval = setInterval(() => {
-current += step;
-if ((step > 0 && current >= target) || (step < 0 && current <= target)) {
-music.volume = target; clearInterval(interval);
-} else { music.volume = current; }
-}, 50);
-}
-</script>
+        function fadeVolume(target) {
+            let current = music.volume;
+            let step = target > current ? 0.05 : -0.05;
+            let interval = setInterval(() => {
+                current += step;
+                if ((step > 0 && current >= target) || (step < 0 && current <= target)) {
+                    music.volume = target;
+                    clearInterval(interval);
+                } else {
+                    music.volume = current;
+                }
+            }, 50);
+        }
+    </script>
 </body>
 </html>
