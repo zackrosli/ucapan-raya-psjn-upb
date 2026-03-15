@@ -2,7 +2,7 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Selamat Hari Raya Aidilfitri - UPB EOD</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -23,54 +23,54 @@
             font-family: 'Poppins', sans-serif;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             overflow: hidden;
+            touch-action: manipulation;
         }
 
-        /* PAGE PERTAMA (OVERLAY) */
+        /* OVERLAY PERTAMA */
         #overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 1000; transition: 0.8s ease-in-out;
-            padding: 20px; box-sizing: border-box;
+            padding: 20px; text-align: center;
         }
 
         .logo-container {
-            display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;
         }
 
         .logo-container img {
-            height: 75px; width: auto;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            height: 15vh; max-height: 80px; width: auto;
+            filter: drop-shadow(0 0 8px var(--emas));
         }
 
         .title-raya {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3rem, 10vw, 5rem);
-            color: var(--emas-cair); margin: 0 0 30px 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.9); text-align: center;
+            font-size: clamp(2.5rem, 12vw, 4.5rem);
+            color: var(--emas-cair); margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
         }
 
         .btn-mula {
-            padding: 14px 45px;
+            padding: 12px 40px;
             background: linear-gradient(145deg, var(--emas), #b8860b);
             color: var(--putih); border: 2px solid var(--emas-cair);
             border-radius: 50px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 2px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 2px; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
-        /* KAD FLIP */
+        /* KAD FLIP - OPTIMASI TELEFON */
         .card-container {
             perspective: 2000px; 
-            width: 90vw; max-width: 450px; 
-            height: calc(90vw * (9 / 16)); max-height: 255px;
+            width: 90vw; max-width: 400px; 
+            height: 55vh; max-height: 600px; /* Tukar ke height supaya lebih stabil di mobile */
             display: none; z-index: 100;
-            transform: translateY(-25%);
         }
 
         .card-inner {
             position: relative; width: 100%; height: 100%;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
 
@@ -78,130 +78,92 @@
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden; border-radius: 15px;
-            border: 3px solid var(--emas);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            backface-visibility: hidden; border-radius: 20px;
+            border: 2px solid var(--emas);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
         }
 
         .card-front {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('kad_ketupat.jpg');
+            background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: var(--putih); text-align: center;
-            background-image: url('kad_ketupat.jpg');
-            background-size: cover; background-position: center;
-        }
-
-        .card-front h1 {
-            font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 9vw, 3.5rem); margin: 0;
-            color: var(--emas-cair); text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
         }
 
         .card-back {
             transform: rotateY(180deg);
-            display: flex; justify-content: center; align-items: center;
-            background-image: url('kad_ketupat.jpg');
-            background-size: cover; background-position: center;
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        video { width: 100%; height: 100%; object-fit: contain; }
+        video { width: 100%; height: 100%; object-fit: cover; } /* Cover supaya penuh skrin kad */
 
         #ucapan-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.8);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            opacity: 0; visibility: hidden;
-            transition: 1s ease-in-out; text-align: center;
-            padding: 10px; box-sizing: border-box; z-index: 5;
+            opacity: 0; visibility: hidden; transition: 1s;
+            padding: 20px; text-align: center; z-index: 5;
         }
 
         #ucapan-overlay.show { opacity: 1; visibility: visible; }
 
-        /* --- AREA ANIMASI BENDERA (DINAIKKAN 3%) --- */
+        /* ANIMASI BENDERA - MOBILE ADAPTIVE */
         .deployment-area {
             position: absolute;
-            bottom: -1%; /* Dinaikkan ke -1% daripada -4% */
-            width: 120%; 
-            height: 50vh; 
+            bottom: 2%; /* Jarak sikit dari bawah */
+            width: 100%; 
+            height: 40vh; 
             opacity: 0;
-            transition: opacity 1s ease-in;
             pointer-events: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             z-index: 10;
         }
 
-        .svg-master {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-
-        .origin-dot {
-            fill: #fff;
-            filter: drop-shadow(0 0 10px #ff4d4d);
-        }
+        .svg-master { width: 100%; height: 100%; }
 
         .trail-path {
-            fill: none;
-            stroke: rgba(212, 175, 55, 0.4);
-            stroke-width: 1.5;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            filter: drop-shadow(0 0 2px var(--emas));
-            transition: stroke-dashoffset 4s cubic-bezier(0.2, 0, 0.2, 1);
+            fill: none; stroke: var(--emas); stroke-width: 1;
+            stroke-dasharray: 1000; stroke-dashoffset: 1000;
+            opacity: 0.5;
         }
 
-        .trail-path.draw {
-            stroke-dashoffset: 0;
-        }
+        .trail-path.draw { stroke-dashoffset: 0; transition: 3s; }
 
         .flag-foreign {
-            opacity: 0;
-            transform-origin: center center;
-            transform: scale(0);
-            transition: transform 4s cubic-bezier(0.2, 0, 0.2, 1), opacity 1s;
+            opacity: 0; transform: scale(0);
+            transition: 1s ease-out;
         }
 
-        .flag-foreign.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .flag-foreign.active { opacity: 1; transform: scale(1); }
 
         .flag-content {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .flag-content img {
-            width: 80px; 
-            height: auto;
-            filter: drop-shadow(0 0 5px black);
-            margin-bottom: 2px;
+            width: 40px; height: auto; /* Kecilkan sikit untuk mobile screen */
+            filter: drop-shadow(0 0 3px black);
         }
 
         .flag-content span {
-            font-size: 10px; 
-            color: var(--emas);
-            font-weight: bold;
-            text-shadow: 1px 1px 2px black;
-            white-space: nowrap;
+            font-size: 8px; color: var(--emas-cair); font-weight: bold;
+            text-transform: uppercase; margin-top: 2px;
         }
 
+        @media (max-width: 480px) {
+            .card-container { height: 50vh; }
+            .flag-content img { width: 35px; }
+            .flag-content span { font-size: 7px; }
+        }
     </style>
 </head>
 <body>
 
     <div id="overlay">
         <div class="logo-container">
-            <img src="logo_api.png" alt="Logo">
-            <img src="logo_eod.png" alt="Logo">
+            <img src="logo_api.png" alt="PDRM">
+            <img src="logo_eod.png" alt="EOD">
         </div>
         <h1 class="title-raya">Selamat Hari Raya</h1>
         <button class="btn-mula" onclick="mulakanWeb()">Buka Kiriman</button>
@@ -214,80 +176,54 @@
     <div class="card-container" id="card" onclick="toggleCard()">
         <div class="card-inner">
             <div class="card-front">
-                <h1>Salam Aidilfitri</h1>
-                <div style="letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase; color: var(--putih);">Maaf Zahir & Batin</div>
-                <p style="font-size: 0.6rem; margin-top: 25px; opacity: 0.8; color: var(--putih);">( Sentuh Kad )</p>
+                <h1 style="font-family:'Great Vibes'; font-size: 3rem; color: var(--emas-cair);">Salam Aidilfitri</h1>
+                <p style="letter-spacing: 2px; font-size: 0.7rem; opacity: 0.9;">MAAF ZAHIR & BATIN</p>
+                <p style="font-size: 0.6rem; margin-top: 30px; border: 1px solid var(--emas); padding: 5px 15px; border-radius: 20px;">Sentuh Kad</p>
             </div>
             
             <div class="card-back">
-                <video id="rayaVideo" playsinline>
+                <video id="rayaVideo" playsinline webkit-playsinline>
                     <source src="hari raya.mp4" type="video/mp4">
                 </video>
 
                 <div id="ucapan-overlay">
-                    <div class="logo-ucapan" style="display:flex; gap:10px; margin-bottom:8px;">
-                        <img src="logo_api.png" style="height:45px;"><img src="logo_eod.png" style="height:45px;">
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <img src="logo_api.png" style="height:40px;">
+                        <img src="logo_eod.png" style="height:40px;">
                     </div>
-                    <p style="color:var(--emas-cair); font-size:0.75rem; line-height:1.4; margin:0; padding: 0 10px;">
+                    <p style="color:var(--emas-cair); font-size:0.8rem; line-height:1.6; margin:0;">
                         Tulus ikhlas daripada kami<br>
-                        Cawangan Persenjataan / Unit Pemusnahan Bom<br>
-                        Ibu Pejabat Polis Daerah KLIA<br>
-                        menyusun sepuluh jari memohon ampun dan maaf<br>
-                        atas segala khilaf yang sengaja mahupun tidak
+                        <strong>UPB / Cawangan Persenjataan</strong><br>
+                        IPD KLIA<br>
+                        <span style="font-size: 0.7rem; opacity: 0.8;">Menyusun jari memohon ampun & maaf.</span>
                     </p>
-                    <div style="font-family:'Great Vibes'; font-size:1.6rem; color:white; margin-top:5px;">Selamat Hari Raya</div>
+                    <div style="font-family:'Great Vibes'; font-size:2rem; color:white; margin-top:15px;">Selamat Hari Raya</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="deployment-area" id="deployArea">
-        <svg class="svg-master" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet">
-            <circle class="origin-dot" cx="500" cy="200" r="5" />
+        <svg class="svg-master" viewBox="0 0 1000 400">
+            <circle cx="500" cy="380" r="5" fill="#fff" /> <path class="trail-path" d="M500,380 L200,100" />
+            <path class="trail-path" d="M500,380 L350,50" />
+            <path class="trail-path" d="M500,380 L500,30" />
+            <path class="trail-path" d="M500,380 L650,50" />
+            <path class="trail-path" d="M500,380 L800,100" />
 
-            <path class="trail-path" d="M500,200 L410,130" /> 
-            <path class="trail-path" d="M500,200 L320,80" /> 
-            <path class="trail-path" d="M500,200 L250,170" /> 
-            <path class="trail-path" d="M500,200 L430,60" /> 
-            <path class="trail-path" d="M500,200 L570,80" /> 
-            <path class="trail-path" d="M500,200 L650,130" /> 
-            <path class="trail-path" d="M500,200 L360,280" /> 
-            <path class="trail-path" d="M500,200 L480,310" /> 
-            <path class="trail-path" d="M500,200 L600,280" /> 
-            <path class="trail-path" d="M500,200 Q620,270 650,250" /> 
-            <path class="trail-path" d="M500,200 Q650,100 740,140" /> 
-
-            <foreignObject class="flag-foreign" x="360" y="80" width="100" height="85">
-                <div class="flag-content"><img src="Selangor-08.svg"><span>SELANGOR</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="270" y="30" width="100" height="85">
+            <foreignObject class="flag-foreign" x="150" y="60" width="100" height="80">
                 <div class="flag-content"><img src="Kedah-08.svg"><span>KEDAH</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="200" y="120" width="100" height="85">
-                <div class="flag-content"><img src="Perak-08.svg"><span>PERAK</span></div>
+            <foreignObject class="flag-foreign" x="300" y="10" width="100" height="80">
+                <div class="flag-content"><img src="Selangor-08.svg"><span>SELANGOR</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="380" y="10" width="100" height="85">
+            <foreignObject class="flag-foreign" x="450" y="-10" width="100" height="80">
                 <div class="flag-content"><img src="Kelantan-08.svg"><span>KELANTAN</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="520" y="30" width="100" height="85">
+            <foreignObject class="flag-foreign" x="600" y="10" width="100" height="80">
                 <div class="flag-content"><img src="Terengganu-08.svg"><span>TERENGGANU</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="600" y="80" width="100" height="85">
-                <div class="flag-content"><img src="Pahang-08.svg"><span>PAHANG</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="310" y="230" width="100" height="85">
-                <div class="flag-content"><img src="Negeri-Sembilan-08.svg"><span>N. SEMBILAN</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="430" y="260" width="100" height="85">
-                <div class="flag-content"><img src="Melacca-08.svg"><span>MELAKA</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="550" y="230" width="100" height="85">
-                <div class="flag-content"><img src="Johor-08.svg"><span>JOHOR</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="600" y="200" width="100" height="85">
-                <div class="flag-content"><img src="Sarawak-08.svg"><span>SARAWAK</span></div>
-            </foreignObject>
-            <foreignObject class="flag-foreign" x="690" y="90" width="100" height="85">
+            <foreignObject class="flag-foreign" x="750" y="60" width="100" height="80">
                 <div class="flag-content"><img src="Sabah-08.svg"><span>SABAH</span></div>
             </foreignObject>
         </svg>
@@ -303,9 +239,9 @@
             document.getElementById('overlay').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('overlay').style.display = 'none';
-                document.querySelector('.card-container').style.display = 'block';
-                music.play();
-                music.volume = 0.5;
+                document.getElementById('card').style.display = 'block';
+                music.play().catch(() => console.log("Autoplay blocked"));
+                music.volume = 0.4;
             }, 800);
         }
 
@@ -313,40 +249,24 @@
             const card = document.getElementById('card');
             card.classList.toggle('is-flipped');
             if (card.classList.contains('is-flipped')) {
-                fadeVolume(0.1);
-                ucapan.classList.remove('show');
-                setTimeout(() => { video.play(); }, 400);
+                music.volume = 0.1;
+                setTimeout(() => { video.play(); }, 300);
             } else {
-                video.pause();
-                video.currentTime = 0;
+                video.pause(); video.currentTime = 0;
+                music.volume = 0.4;
                 ucapan.classList.remove('show');
-                fadeVolume(0.5);
             }
         }
 
-        video.onended = () => { 
-            ucapan.classList.add('show'); 
-            fadeVolume(0.5);
+        video.onended = () => {
+            ucapan.classList.add('show');
+            music.volume = 0.5;
             deployArea.style.opacity = "1";
             setTimeout(() => {
-                document.querySelectorAll('.trail-path').forEach(t => t.classList.add('draw'));
-                document.querySelectorAll('.flag-foreign').forEach(n => n.classList.add('active'));
+                document.querySelectorAll('.trail-path').forEach(p => p.classList.add('draw'));
+                document.querySelectorAll('.flag-foreign').forEach(f => f.classList.add('active'));
             }, 500);
         };
-
-        function fadeVolume(target) {
-            let current = music.volume;
-            let step = target > current ? 0.05 : -0.05;
-            let interval = setInterval(() => {
-                current += step;
-                if ((step > 0 && current >= target) || (step < 0 && current <= target)) {
-                    music.volume = target;
-                    clearInterval(interval);
-                } else {
-                    music.volume = current;
-                }
-            }, 50);
-        }
     </script>
 </body>
 </html>
