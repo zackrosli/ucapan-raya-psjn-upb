@@ -10,6 +10,7 @@
     <meta property="og:title" content="Selamat Hari Raya Aidilfitri - UPB EOD">
     <meta property="og:description" content="Tulus Ikhlas daripada Cawangan Persenjataan / Unit Pemusnahan Bom IPD KLIA.">
     <meta property="og:image" content="https://zackrosli.github.io/ucapan-raya-psjn-upb/thumb.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -85,7 +86,6 @@
         .card-back { transform: rotateY(180deg); background: black; position: relative; }
         video { width: 100%; height: 100%; object-fit: contain; }
 
-        /* UCAPAN & LOGO DALAM KAD */
         #ucapan-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); display: flex; flex-direction: column;
@@ -118,16 +118,37 @@
             stroke-dashoffset: 0; transition: stroke-dashoffset 4s cubic-bezier(0.2, 0, 0.2, 1);
         }
 
-        /* BENDERA KELUAR DARI TITIK TENGAH */
+        /* BAHAGIAN KEMASKINI UNTUK IPHONE (KEYFRAMES) */
         .flag-foreign {
-            opacity: 0; transform: scale(0);
-            transform-origin: 500px 200px; /* Titik tengah koordinat SVG */
-            transition: transform 4s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.5s;
+            opacity: 0;
+            transform-origin: 500px 200px;
+            -webkit-transform-origin: 500px 200px;
+            pointer-events: none;
         }
 
-        .flag-foreign.active { opacity: 1; transform: scale(1); }
+        .flag-foreign.active {
+            animation: kembangBendera 4s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+            -webkit-animation: kembangBendera 4s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+        }
 
-        .flag-content { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        @keyframes kembangBendera {
+            0% { opacity: 0; transform: scale(0); }
+            10% { opacity: 1; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @-webkit-keyframes kembangBendera {
+            0% { opacity: 0; -webkit-transform: scale(0); }
+            10% { opacity: 1; }
+            100% { opacity: 1; -webkit-transform: scale(1); }
+        }
+
+        .flag-content { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
         .flag-content img { width: 85px; height: auto; filter: drop-shadow(0 0 5px black); }
         .flag-content span { font-size: 9px; color: var(--emas); font-weight: bold; text-shadow: 1px 1px 2px black; }
 
@@ -189,37 +210,37 @@
             <path class="trail-path" d="M500,200 Q620,270 650,250" /> 
             <path class="trail-path" d="M500,200 Q650,100 740,140" /> 
 
-            <foreignObject class="flag-foreign" x="360" y="80" width="100" height="85">
+            <foreignObject class="flag-foreign" x="360" y="80" width="120" height="110">
                 <div class="flag-content"><img src="Selangor-08.svg"><span>SELANGOR</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="270" y="30" width="100" height="85">
+            <foreignObject class="flag-foreign" x="270" y="30" width="120" height="110">
                 <div class="flag-content"><img src="Kedah-08.svg"><span>KEDAH</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="200" y="120" width="100" height="85">
+            <foreignObject class="flag-foreign" x="200" y="120" width="120" height="110">
                 <div class="flag-content"><img src="Perak-08.svg"><span>PERAK</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="380" y="10" width="100" height="85">
+            <foreignObject class="flag-foreign" x="380" y="10" width="120" height="110">
                 <div class="flag-content"><img src="Kelantan-08.svg"><span>KELANTAN</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="520" y="30" width="100" height="85">
+            <foreignObject class="flag-foreign" x="520" y="30" width="120" height="110">
                 <div class="flag-content"><img src="Terengganu-08.svg"><span>TERENGGANU</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="600" y="80" width="100" height="85">
+            <foreignObject class="flag-foreign" x="600" y="80" width="120" height="110">
                 <div class="flag-content"><img src="Pahang-08.svg"><span>PAHANG</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="310" y="230" width="100" height="85">
+            <foreignObject class="flag-foreign" x="310" y="230" width="120" height="110">
                 <div class="flag-content"><img src="Negeri-Sembilan-08.svg"><span>N. SEMBILAN</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="430" y="260" width="100" height="85">
+            <foreignObject class="flag-foreign" x="430" y="260" width="120" height="110">
                 <div class="flag-content"><img src="Melacca-08.svg"><span>MELAKA</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="550" y="230" width="100" height="85">
+            <foreignObject class="flag-foreign" x="550" y="230" width="120" height="110">
                 <div class="flag-content"><img src="Johor-08.svg"><span>JOHOR</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="600" y="200" width="100" height="85">
+            <foreignObject class="flag-foreign" x="600" y="200" width="120" height="110">
                 <div class="flag-content"><img src="Sarawak-08.svg"><span>SARAWAK</span></div>
             </foreignObject>
-            <foreignObject class="flag-foreign" x="690" y="90" width="100" height="85">
+            <foreignObject class="flag-foreign" x="690" y="90" width="120" height="110">
                 <div class="flag-content"><img src="Sabah-08.svg"><span>SABAH</span></div>
             </foreignObject>
         </svg>
@@ -253,18 +274,15 @@
                 ucapan.classList.remove('show');
                 music.volume = 0.5;
                 deployArea.style.opacity = "0";
-                // Reset Animasi
                 document.querySelectorAll('.trail-path').forEach(p => p.classList.remove('draw'));
                 document.querySelectorAll('.flag-foreign').forEach(f => f.classList.remove('active'));
             }
         }
 
-        // TRIGGER SEMUA ANIMASI BILA VIDEO TAMAT
         video.onended = () => { 
             ucapan.classList.add('show'); 
             music.volume = 0.5;
             deployArea.style.opacity = "1";
-            
             setTimeout(() => {
                 document.querySelectorAll('.trail-path').forEach(p => p.classList.add('draw'));
                 document.querySelectorAll('.flag-foreign').forEach(f => f.classList.add('active'));
