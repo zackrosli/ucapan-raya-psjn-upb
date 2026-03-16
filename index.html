@@ -33,29 +33,36 @@
             overflow: hidden;
         }
 
-        /* OVERLAY MULA */
+        /* OVERLAY MULA - DIPASTIKAN CENTER */
         #overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.75);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            display: flex; flex-direction: column; 
+            justify-content: center; align-items: center;
+            text-align: center; /* Memastikan teks di tengah */
             z-index: 1000; transition: 0.8s ease-in-out;
+            padding: 20px; box-sizing: border-box;
         }
 
         .header-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            width: 100%;
             margin-bottom: 25px;
         }
 
         .logo-container { 
             display: flex; 
+            justify-content: center;
+            align-items: center;
             gap: 20px; 
-            margin-bottom: 8px; 
+            margin-bottom: 10px; 
         }
         
         .logo-container img { 
-            height: 85px; 
+            height: clamp(65px, 15vw, 85px); /* Saiz adaptif untuk telefon */
             filter: drop-shadow(0 0 10px var(--emas)); 
         }
 
@@ -63,7 +70,7 @@
         .subtitle-ipd {
             font-family: 'Ramabhadra', sans-serif;
             color: var(--emas-cair);
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 5vw, 1.4rem);
             font-weight: 400;
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px var(--emas);
@@ -71,13 +78,14 @@
             text-transform: uppercase;
         }
 
-        /* KEKALKAN WARNA EMAS UNTUK TAJUK UTAMA */
+        /* TAJUK UTAMA DI TENGAH */
         .title-raya {
             font-family: 'Great Vibes', cursive; 
-            font-size: clamp(3.5rem, 12vw, 5.5rem); 
+            font-size: clamp(3rem, 12vw, 5.5rem); 
             color: var(--emas-cair); 
             text-shadow: 0 0 20px var(--emas), 2px 2px 5px rgba(0,0,0,0.5);
             margin: 0 0 40px 0;
+            width: 100%;
         }
 
         .btn-mula {
@@ -144,7 +152,7 @@
 
         .teks-ucapan { color: var(--emas-cair); font-size: 0.75rem; line-height: 1.4; margin: 0; }
 
-        /* AREA ANIMASI DEPLOYMENT (IPHONE & ANDROID STABLE) */
+        /* AREA ANIMASI DEPLOYMENT */
         .deployment-area {
             position: absolute; bottom: 2%; width: 100%; height: 55vh;
             opacity: 0; transition: opacity 1s; pointer-events: none; z-index: 10;
@@ -235,7 +243,7 @@
                         <strong>Cawangan Persenjataan / Unit Pemusnahan Bom</strong><br>
                         Ibu Pejabat Polis Daerah KLIA
                     </p>
-                    <div style="font-family:'Great Vibes'; font-size:2.2rem; color:var(--emas-cair); margin-top:10px;">Selamat Hari Raya</div>
+                    <div style="font-family:'Great Vibes'; font-size:2.2rem; color:var(--putih); margin-top:10px;">Selamat Hari Raya</div>
                 </div>
             </div>
         </div>
