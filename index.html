@@ -51,7 +51,7 @@
         .logo-container { 
             display: flex; 
             gap: 20px; 
-            margin-bottom: 5px; 
+            margin-bottom: 8px; 
         }
         
         .logo-container img { 
@@ -59,7 +59,7 @@
             filter: drop-shadow(0 0 10px var(--emas)); 
         }
 
-        /* GAYA IPD KLIA GUNA FONT RAMABHADRA */
+        /* IPD KLIA GUNA FONT RAMABHADRA */
         .subtitle-ipd {
             font-family: 'Ramabhadra', sans-serif;
             color: var(--emas-cair);
@@ -71,11 +71,12 @@
             text-transform: uppercase;
         }
 
+        /* KEKALKAN WARNA EMAS UNTUK TAJUK UTAMA */
         .title-raya {
             font-family: 'Great Vibes', cursive; 
             font-size: clamp(3.5rem, 12vw, 5.5rem); 
-            color: var(--putih); 
-            text-shadow: 0 0 20px var(--emas);
+            color: var(--emas-cair); 
+            text-shadow: 0 0 20px var(--emas), 2px 2px 5px rgba(0,0,0,0.5);
             margin: 0 0 40px 0;
         }
 
@@ -143,7 +144,7 @@
 
         .teks-ucapan { color: var(--emas-cair); font-size: 0.75rem; line-height: 1.4; margin: 0; }
 
-        /* AREA ANIMASI DEPLOYMENT */
+        /* AREA ANIMASI DEPLOYMENT (IPHONE & ANDROID STABLE) */
         .deployment-area {
             position: absolute; bottom: 2%; width: 100%; height: 55vh;
             opacity: 0; transition: opacity 1s; pointer-events: none; z-index: 10;
@@ -234,7 +235,7 @@
                         <strong>Cawangan Persenjataan / Unit Pemusnahan Bom</strong><br>
                         Ibu Pejabat Polis Daerah KLIA
                     </p>
-                    <div style="font-family:'Great Vibes'; font-size:2.2rem; color:white; margin-top:10px;">Selamat Hari Raya</div>
+                    <div style="font-family:'Great Vibes'; font-size:2.2rem; color:var(--emas-cair); margin-top:10px;">Selamat Hari Raya</div>
                 </div>
             </div>
         </div>
